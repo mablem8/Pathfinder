@@ -7,8 +7,8 @@
 //  Copyright (c) 2013 Bradley Denby. All rights reserved.
 //
 
-#ifndef _constrainedAdditiveCostTest_h
-#define _constrainedAdditiveCostTest_h
+#ifndef Pathfinder_constrainedAdditiveCostTest_h
+#define Pathfinder_constrainedAdditiveCostTest_h
 
 #include "ConstrainedAdditiveCost.h"
 
@@ -1169,7 +1169,7 @@ void constrainedAdditiveCostTest() {
 
     std::cout << "Check that a Constrained Additive Cost object equals a copy, but that" << std::endl
               << "the addresses of a Constrained Additive Cost object and a copy differ:" << std::endl;
-    std::cout << "ccacost0 == copycacost0:\t\t"
+    std::cout << "cacost0 == copycacost0:\t\t\t"
               << ((cacost0 == copycacost0) ? "TRUE" : "FALSE")
               << "\t\t\tCorrect output: "
               << "TRUE"

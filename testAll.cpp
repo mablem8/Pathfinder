@@ -11,12 +11,16 @@
 #include "costTest.h"
 #include "additiveCostTest.h"
 #include "constrainedAdditiveCostTest.h"
+#include "multiplicativeCostTest.h"
+#include "constrainedMultiplicativeCostTest.h"
 
 int main(int argc, const char * argv[])
 {
     costTest();
     additiveCostTest();
     constrainedAdditiveCostTest();
+    multiplicativeCostTest();
+    constrainedMultiplicativeCostTest();
         
     return 0;
 }
