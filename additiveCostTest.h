@@ -38,7 +38,7 @@ void additiveCostTest() {
     AdditiveCost *pacost5 = new AdditiveCost(5.00, "fives");
     
     std::cout << std::endl
-    << "\tAdditiveCost copyacost0(acost0);" << std::endl;
+              << "\tAdditiveCost copyacost0(acost0);" << std::endl;
     AdditiveCost copyacost0(acost0);
     std::cout << "\tAdditiveCost copyacost1(acost1);" << std::endl;
     AdditiveCost copyacost1(acost1);
@@ -52,7 +52,7 @@ void additiveCostTest() {
     AdditiveCost copypacost5(*pacost5);
     
     std::cout << std::endl
-    << "\tAdditiveCost *pcopyacost0 = new AdditiveCost(acost0);" << std::endl;
+              << "\tAdditiveCost *pcopyacost0 = new AdditiveCost(acost0);" << std::endl;
     AdditiveCost *pcopyacost0 = new AdditiveCost(acost0);
     std::cout << "\tAdditiveCost *pcopyacost1 = new AdditiveCost(acost1);" << std::endl;
     AdditiveCost *pcopyacost1 = new AdditiveCost(acost1);
@@ -987,7 +987,7 @@ void additiveCostTest() {
               << (acost2*copyacost2)->toString()
               << "\t\tCorrect output: "
               << (acost2*acost2)->toString()
-              << ((*(acost0*copyacost0) == *(acost0*acost0)) ? "\t\tOK" : "\t\tTEST FAILED")
+              << ((*(acost2*copyacost2) == *(acost2*acost2)) ? "\t\tOK" : "\t\tTEST FAILED")
               << std::endl;
     std::cout << "acost2*(*pcopyacost2):\t\t\t"
               << (acost2*(*pcopyacost2))->toString()
@@ -1080,7 +1080,7 @@ void additiveCostTest() {
               << ((*(acost1*acost2) == *sumCost) ? "\t\tOK" : "\t\tTEST FAILED")
               << std::endl;
     delete sumCost;
-        
+    
     /* Test destructor */
     
     std::cout << std::endl
@@ -1093,6 +1093,12 @@ void additiveCostTest() {
     delete pacost4;
     std::cout << "\tdelete pacost5;" << std::endl;
     delete pacost5;
+    std::cout << "\tdelete pcopyacost0;" << std::endl;
+    delete pcopyacost0;
+    std::cout << "\tdelete pcopyacost1;" << std::endl;
+    delete pcopyacost1;
+    std::cout << "\tdelete pcopyacost2;" << std::endl;
+    delete pcopyacost2;
     std::cout << "\tdelete pcopypacost3;" << std::endl;
     delete pcopypacost3;
     std::cout << "\tdelete pcopypacost4;" << std::endl;

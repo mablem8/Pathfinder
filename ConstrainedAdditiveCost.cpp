@@ -16,8 +16,6 @@
  */
 ConstrainedAdditiveCost::ConstrainedAdditiveCost(const double cost, const std::string& units, const double constraint) : Cost(cost, units), __constraint(constraint) {}
 
-ConstrainedAdditiveCost::ConstrainedAdditiveCost(const Cost& cost) : Cost(cost.getCost(), cost.getUnits()), __constraint(DEFAULT_COST) {}
-
 ConstrainedAdditiveCost::ConstrainedAdditiveCost(const ConstrainedAdditiveCost& cost) : Cost(cost.getCost(), cost.getUnits()), __constraint(cost.getConstraint()) {}
 
 /*

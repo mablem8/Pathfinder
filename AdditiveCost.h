@@ -15,7 +15,7 @@ class AdditiveCost : public Cost {
 public:
     
     AdditiveCost(const double cost=DEFAULT_COST, const std::string& units=DEFAULT_UNITS);
-    AdditiveCost(const Cost& cost);
+    AdditiveCost(const AdditiveCost& cost);
     virtual ~AdditiveCost();
     
     virtual bool operator==(const AdditiveCost& cost) const;

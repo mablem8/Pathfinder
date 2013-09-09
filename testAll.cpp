@@ -9,14 +9,14 @@
 #include <iostream>
 
 #include "costTest.h"
-//#include "additiveCostTest.h"
-//#include "constrainedAdditiveCostTest.h"
+#include "additiveCostTest.h"
+#include "constrainedAdditiveCostTest.h"
 
 int main(int argc, const char * argv[])
 {
     costTest();
-    //additiveCostTest();
-    //constrainedAdditiveCostTest();
+    additiveCostTest();
+    constrainedAdditiveCostTest();
         
     return 0;
 }

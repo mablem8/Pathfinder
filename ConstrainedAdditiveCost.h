@@ -19,7 +19,6 @@ private:
 public:
     
     ConstrainedAdditiveCost(const double cost=DEFAULT_COST, const std::string& units=DEFAULT_UNITS, const double constraint=DEFAULT_COST);
-    ConstrainedAdditiveCost(const Cost& cost);
     ConstrainedAdditiveCost(const ConstrainedAdditiveCost& cost);
     virtual ~ConstrainedAdditiveCost();
     

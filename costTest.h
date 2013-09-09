@@ -762,7 +762,8 @@ void costTest() {
               << ((pcopypcost5 == pcopypcost5) ? "\t\t\tOK" : "\t\t\tTEST FAILED")
               << std::endl << std::endl;
     
-    std::cout << "Check that a Cost object equals a copy, but that the addresses of a Cost object and a copy differ:" << std::endl;
+    std::cout << "Check that a Cost object equals a copy, but that" << std::endl
+              << "the addresses of a Cost object and a copy differ:" << std::endl;
     std::cout << "cost0 == copycost0:\t\t\t"
               << ((cost0 == copycost0) ? "TRUE" : "FALSE")
               << "\t\t\tCorrect output: "
@@ -1040,7 +1041,7 @@ void costTest() {
               << ((*pcost5)*(*pcopypcost5))->toString()
               << "\t\tCorrect output: "
               << ((*pcost5)*(*pcost5))->toString()
-              << (((*pcost5)*(*pcopypcost5) == (*pcost3)*(*pcost3)) ? "\t\tOK" : "\t\tTEST FAILED")
+              << (((*pcost5)*(*pcopypcost5) == (*pcost5)*(*pcost5)) ? "\t\tOK" : "\t\tTEST FAILED")
               << std::endl << std::endl;
     
     std::cout << "cost0*cost1:\t\t\t\t"
@@ -1074,6 +1075,12 @@ void costTest() {
     delete pcost4;
     std::cout << "\tdelete pcost5;" << std::endl;
     delete pcost5;
+    std::cout << "\tdelete pcopycost0;" << std::endl;
+    delete pcopycost0;
+    std::cout << "\tdelete pcopycost1;" << std::endl;
+    delete pcopycost1;
+    std::cout << "\tdelete pcopycost2;" << std::endl;
+    delete pcopycost2;
     std::cout << "\tdelete pcopypcost3;" << std::endl;
     delete pcopypcost3;
     std::cout << "\tdelete pcopypcost4;" << std::endl;

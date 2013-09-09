@@ -18,7 +18,7 @@ AdditiveCost::AdditiveCost(const double cost, const std::string& units) : Cost(c
 /*
  * Copy constructor
  */
-AdditiveCost::AdditiveCost(const Cost& cost) : Cost(cost.getCost(), cost.getUnits()) {}
+AdditiveCost::AdditiveCost(const AdditiveCost& cost) : Cost(cost.getCost(), cost.getUnits()) {}
 
 /*
  * There is nothing to delete in the AddiveCost class.
