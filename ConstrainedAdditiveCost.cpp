@@ -51,7 +51,7 @@ bool ConstrainedAdditiveCost::operator==(const ConstrainedAdditiveCost& cost) co
  * dictated by the trailing const, the overloaded operator * cannot
  * modifiy the ConstrainedAdditiveCost object.
  */
-const Cost* ConstrainedAdditiveCost::operator*(const ConstrainedAdditiveCost& cost) const {
+const Cost* ConstrainedAdditiveCost::operator*(const Cost& cost) const {
     const Cost* result = INVALID_COST;
     int totalCost = this->getCost() + cost.getCost();
     /* Below: not a conditional, just a boolean; takes advantage of

@@ -44,7 +44,7 @@ bool AdditiveCost::operator==(const AdditiveCost& cost) const {
  * reasons. As dictated by the trailing const, the overloaded
  * operator * cannot modifiy the AdditiveCost object.
  */
-const Cost* AdditiveCost::operator*(const AdditiveCost& cost) const {
+const Cost* AdditiveCost::operator*(const Cost& cost) const {
     return new AdditiveCost(this->getCost() + cost.getCost(), this->getUnits());
 }
 

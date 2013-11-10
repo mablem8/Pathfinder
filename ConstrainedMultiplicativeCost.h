@@ -25,7 +25,7 @@ public:
     double getConstraint() const;
     
     virtual bool operator==(const ConstrainedMultiplicativeCost& cost) const;
-    virtual const Cost* operator*(const ConstrainedMultiplicativeCost& cost) const;
+    virtual const Cost* operator*(const Cost& cost) const;
     virtual std::string toString() const;
     
 };

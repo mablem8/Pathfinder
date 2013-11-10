@@ -15,6 +15,8 @@
 #include "constrainedMultiplicativeCostTest.h"
 
 #include "pathTest.h"
+#include "pathWithoutCostsTest.h"
+#include "pathWithCostsTest.h"
 
 int main(int argc, const char * argv[])
 {
@@ -25,6 +27,8 @@ int main(int argc, const char * argv[])
     constrainedMultiplicativeCostTest();
     
     pathTest();
+    pathWithoutCostsTest();
+    pathWithCostsTest();
         
     return 0;
 }

@@ -19,7 +19,7 @@ bool MultiplicativeCost::operator==(const MultiplicativeCost& cost) const {
             && (this->getUnits() == cost.getUnits()));
 }
 
-const Cost* MultiplicativeCost::operator*(const MultiplicativeCost& cost) const {
+const Cost* MultiplicativeCost::operator*(const Cost& cost) const {
     return new MultiplicativeCost(this->getCost() * cost.getCost(), this->getUnits());
 }
 

@@ -19,7 +19,7 @@ public:
     virtual ~MultiplicativeCost();
     
     virtual bool operator==(const MultiplicativeCost& cost) const;
-    virtual const Cost* operator*(const MultiplicativeCost& cost) const;
+    virtual const Cost* operator*(const Cost& cost) const;
     virtual std::string toString() const;
     
 };

@@ -23,8 +23,7 @@ const std::vector<unsigned int>& Path::getPath() const {
 }
 
 bool Path::operator==(const Path& path) const {
-    return (this->getPath().size() == path.getPath().size()
-            && std::equal(this->getPath().begin(), this->getPath().end(), path.getPath().begin()));
+    return (this->getPath() == path.getPath());
 }
 
 const Path* Path::operator*(const Path& path) const {
@@ -39,7 +38,6 @@ std::string Path::toString() const {
     }
     ss << " ]";
     return ss.str();
-//    return "Blah";
 }
 
 std::ostream& operator<<(std::ostream& output, const Path& path) {

@@ -24,7 +24,7 @@ bool ConstrainedMultiplicativeCost::operator==(const ConstrainedMultiplicativeCo
             && (this->getConstraint() == cost.getConstraint()));
 }
 
-const Cost* ConstrainedMultiplicativeCost::operator*(const ConstrainedMultiplicativeCost& cost) const {
+const Cost* ConstrainedMultiplicativeCost::operator*(const Cost& cost) const {
     const Cost* result = INVALID_COST;
     int totalCost = this->getCost() * cost.getCost();
     /* Below: not a conditional, just a boolean; takes advantage of
