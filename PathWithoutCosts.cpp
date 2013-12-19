@@ -12,11 +12,15 @@ PathWithoutCosts::PathWithoutCosts(const std::vector<unsigned int>& path) : Path
 PathWithoutCosts::PathWithoutCosts(const PathWithoutCosts& path) : Path(path.getPath()) {}
 PathWithoutCosts::~PathWithoutCosts() {}
 
+const Path* PathWithoutCosts::clone() const {
+    return new PathWithoutCosts(*this);
+}
+
 bool PathWithoutCosts::operator==(const PathWithoutCosts& path) const {
     return (this->getPath() == path.getPath());
 }
 
-const Path* PathWithoutCosts::operator*(const PathWithoutCosts& path) const {
+const Path* PathWithoutCosts::operator*(const Path& path) const {
     if (this->getPath().size()==0 || path.getPath().size()==0) {
         return INVALID_PATH;
     }

@@ -15,8 +15,8 @@ PathWithCosts::PathWithCosts(const std::vector<unsigned int>& path, const std::v
 
 PathWithCosts::PathWithCosts(const PathWithCosts& path) : Path(path.getPath()) {
     for (int i=0; i<path.getCosts().size(); i++) {
-        const Cost* costi = new Cost(*(path.getCosts().at(i)));
-        __costs.push_back(costi);
+        const Cost* costi = path.getCosts().at(i);
+        __costs.push_back(costi->clone());
         costi = NULL;
     }
 }
@@ -31,6 +31,10 @@ PathWithCosts::~PathWithCosts() {
 
 const std::vector<const Cost*>& PathWithCosts::getCosts() const {
     return __costs;
+}
+
+const Path* PathWithCosts::clone() const {
+    return new PathWithCosts(*this);
 }
 
 bool PathWithCosts::operator==(const PathWithCosts& path) const {
@@ -48,7 +52,7 @@ bool PathWithCosts::operator==(const PathWithCosts& path) const {
 }
 
 // assuming the lengths of the cost vectors are the same and that they are nonzero
-const Path* PathWithCosts::operator*(const PathWithCosts& path) const {
+const Path* PathWithCosts::operator*(const Path& path) const {
     if (this->getPath().size()==0 || path.getPath().size()==0) {
         return INVALID_PATH;
     }
@@ -56,7 +60,7 @@ const Path* PathWithCosts::operator*(const PathWithCosts& path) const {
         std::vector<const Cost*> newCosts;
         //std::cout << "Path " << this->getPath().at(0) << " costs vector size: " << __costs.size() << std::endl;
         for (int i=0; i<__costs.size(); i++) {
-            newCosts.push_back( (*(__costs.at(i))) * (*(path.getCosts().at(i))) );
+            newCosts.push_back( (*(__costs.at(i))) * (*(dynamic_cast<const PathWithCosts&>(path).getCosts().at(i))) );
             //std::cout << newCosts.at(i)->toString() << std::endl;
             if (newCosts.at(i) == INVALID_COST) {
                 return INVALID_PATH;//this->getCosts().at(i)

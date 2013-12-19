@@ -30,6 +30,7 @@ public:
     double getCost() const;
     std::string getUnits() const;
     
+    virtual const Cost* clone() const;
     virtual bool operator==(const Cost& cost) const;
     virtual const Cost* operator*(const Cost& cost) const;
     virtual std::string toString() const;

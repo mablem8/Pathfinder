@@ -27,6 +27,7 @@ public:
     
     const std::vector<unsigned int>& getPath() const;
     
+    virtual const Path* clone() const;
     virtual bool operator==(const Path& path) const;
     virtual const Path* operator*(const Path& path) const;
     virtual std::string toString() const;

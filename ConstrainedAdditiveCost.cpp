@@ -31,6 +31,10 @@ double ConstrainedAdditiveCost::getConstraint() const {
     return __constraint;
 }
 
+const Cost* ConstrainedAdditiveCost::clone() const {
+    return new ConstrainedAdditiveCost(*this);
+}
+
 bool ConstrainedAdditiveCost::operator==(const ConstrainedAdditiveCost& cost) const {
     return ((this->getCost() == cost.getCost())
             && (this->getUnits() == cost.getUnits())
@@ -53,7 +57,7 @@ bool ConstrainedAdditiveCost::operator==(const ConstrainedAdditiveCost& cost) co
  */
 const Cost* ConstrainedAdditiveCost::operator*(const Cost& cost) const {
     const Cost* result = INVALID_COST;
-    int totalCost = this->getCost() + cost.getCost();
+    double totalCost = this->getCost() + cost.getCost();
     /* Below: not a conditional, just a boolean; takes advantage of
      * short-circuiting in boolean expressions.
      * Equivalent if/then expression:

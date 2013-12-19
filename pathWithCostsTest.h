@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Bradley Denby. All rights reserved.
 //
 
-#ifndef _pathWithCostsTest_h
-#define _pathWithCostsTest_h
+#ifndef Pathfinder_pathWithCostsTest_h
+#define Pathfinder_pathWithCostsTest_h
 
 #include "PathWithCosts.h"
 #include <fstream>

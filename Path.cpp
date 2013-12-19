@@ -22,6 +22,10 @@ const std::vector<unsigned int>& Path::getPath() const {
     return __path;
 }
 
+const Path* Path::clone() const {
+    return new Path(*this);
+}
+
 bool Path::operator==(const Path& path) const {
     return (this->getPath() == path.getPath());
 }

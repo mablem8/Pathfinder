@@ -14,6 +14,10 @@ MultiplicativeCost::MultiplicativeCost(const MultiplicativeCost& cost) : Cost(co
 
 MultiplicativeCost::~MultiplicativeCost() {}
 
+const Cost* MultiplicativeCost::clone() const {
+    return new MultiplicativeCost(*this);
+}
+
 bool MultiplicativeCost::operator==(const MultiplicativeCost& cost) const {
     return ((this->getCost() == cost.getCost())
             && (this->getUnits() == cost.getUnits()));

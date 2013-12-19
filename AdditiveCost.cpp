@@ -25,6 +25,10 @@ AdditiveCost::AdditiveCost(const AdditiveCost& cost) : Cost(cost.getCost(), cost
  */
 AdditiveCost::~AdditiveCost() {}
 
+const Cost* AdditiveCost::clone() const {
+    return new AdditiveCost(*this);
+}
+
 /*
  * operator==
  */

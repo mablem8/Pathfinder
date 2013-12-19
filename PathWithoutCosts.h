@@ -18,8 +18,9 @@ public:
     PathWithoutCosts(const PathWithoutCosts& path);
     virtual ~PathWithoutCosts();
     
+    virtual const Path* clone() const;
     virtual bool operator==(const PathWithoutCosts& path) const;
-    virtual const Path* operator*(const PathWithoutCosts& path) const;
+    virtual const Path* operator*(const Path& path) const;
     virtual std::string toString() const;
     
 };

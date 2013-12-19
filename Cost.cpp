@@ -58,6 +58,10 @@ std::string Cost::getUnits() const {
     return __units;
 }
 
+const Cost* Cost::clone() const {
+    return new Cost(*this);
+}
+
 bool Cost::operator==(const Cost& cost) const {
     return ((this->getCost() == cost.getCost())
             && (this->getUnits() == cost.getUnits()));

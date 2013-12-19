@@ -13,10 +13,14 @@
 #include "constrainedAdditiveCostTest.h"
 #include "multiplicativeCostTest.h"
 #include "constrainedMultiplicativeCostTest.h"
+#include "ConstrainedProbabilityCost.h"
 
 #include "pathTest.h"
 #include "pathWithoutCostsTest.h"
 #include "pathWithCostsTest.h"
+
+#include "pathMatrixCellTest.h"
+#include "pathMatrixTest.h"
 
 int main(int argc, const char * argv[])
 {
@@ -29,6 +33,9 @@ int main(int argc, const char * argv[])
     pathTest();
     pathWithoutCostsTest();
     pathWithCostsTest();
+    
+    pathMatrixCellTest();
+    pathMatrixTest();
         
     return 0;
 }

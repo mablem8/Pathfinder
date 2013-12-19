@@ -716,19 +716,19 @@ void pathTest() {
               << (path0*path1)->toString()
               << "\t\t\tCorrect output: "
               << INVALID_PATH->toString()
-              << ((path0*path1) ? "\t\t\tOK" : "\t\t\tTEST FAILED")
+              << ((path0*path1 == INVALID_PATH) ? "\t\t\tOK" : "\t\t\tTEST FAILED")
               << std::endl;
     std::cout << "path0*(*ppath3):\t\t\t"
               << (path0*(*ppath3))->toString()
               << "\t\t\tCorrect output: "
               << INVALID_PATH->toString()
-              << ((path0*(*ppath3)) ? "\t\t\tOK" : "\t\t\tTEST FAILED")
+              << ((path0*(*ppath3) == INVALID_PATH) ? "\t\t\tOK" : "\t\t\tTEST FAILED")
               << std::endl;
     std::cout << "path1*(*ppath3):\t\t\t"
               << (path1*(*ppath3))->toString()
               << "\t\t\tCorrect output: "
               << INVALID_PATH->toString()
-              << ((path1*(*ppath3)) ? "\t\t\tOK" : "\t\t\tTEST FAILED")
+              << ((path1*(*ppath3) == INVALID_PATH) ? "\t\t\tOK" : "\t\t\tTEST FAILED")
               << std::endl;
     
     /* Test destructor */
