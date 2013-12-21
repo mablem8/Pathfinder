@@ -15,7 +15,12 @@ MultiplicativeCost::MultiplicativeCost(const MultiplicativeCost& cost) : Cost(co
 MultiplicativeCost::~MultiplicativeCost() {}
 
 const Cost* MultiplicativeCost::clone() const {
-    return new MultiplicativeCost(*this);
+    if (this != INVALID_COST) {
+        return new MultiplicativeCost(*this);
+    }
+    else {
+        return this;
+    }
 }
 
 bool MultiplicativeCost::operator==(const MultiplicativeCost& cost) const {
@@ -25,7 +30,7 @@ bool MultiplicativeCost::operator==(const MultiplicativeCost& cost) const {
 
 const Cost* MultiplicativeCost::operator*(const Cost& cost) const {
     return new MultiplicativeCost(this->getCost() * cost.getCost(), this->getUnits());
-}
+} // problem opping with INVALID_COST
 
 std::string MultiplicativeCost::toString() const {
     std::stringstream ss;

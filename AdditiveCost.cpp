@@ -26,7 +26,12 @@ AdditiveCost::AdditiveCost(const AdditiveCost& cost) : Cost(cost.getCost(), cost
 AdditiveCost::~AdditiveCost() {}
 
 const Cost* AdditiveCost::clone() const {
-    return new AdditiveCost(*this);
+    if (this != INVALID_COST) {
+        return new AdditiveCost(*this);
+    }
+    else {
+        return this;
+    }
 }
 
 /*
@@ -50,7 +55,7 @@ bool AdditiveCost::operator==(const AdditiveCost& cost) const {
  */
 const Cost* AdditiveCost::operator*(const Cost& cost) const {
     return new AdditiveCost(this->getCost() + cost.getCost(), this->getUnits());
-}
+} // problem: opping with INVALID_COST
 
 /*
  * toString()

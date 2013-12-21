@@ -23,7 +23,23 @@ const std::vector<unsigned int>& Path::getPath() const {
 }
 
 const Path* Path::clone() const {
-    return new Path(*this);
+    if (this != INVALID_PATH) {
+        return new Path(*this);
+    }
+    else {
+        return this;
+    }
+}
+
+const Path* Path::cloneAndPrepend(const unsigned int vertex) const {
+    if (this != INVALID_PATH) {
+        std::vector<unsigned int> prependedPath(__path);
+        prependedPath.insert(prependedPath.begin(), vertex);
+        return new Path(prependedPath);
+    }
+    else {
+        return this;
+    }
 }
 
 bool Path::operator==(const Path& path) const {

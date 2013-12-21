@@ -13,7 +13,23 @@ PathWithoutCosts::PathWithoutCosts(const PathWithoutCosts& path) : Path(path.get
 PathWithoutCosts::~PathWithoutCosts() {}
 
 const Path* PathWithoutCosts::clone() const {
-    return new PathWithoutCosts(*this);
+    if (this != INVALID_PATH) {
+        return new PathWithoutCosts(*this);
+    }
+    else {
+        return this;
+    }
+}
+
+const Path* PathWithoutCosts::cloneAndPrepend(const unsigned int vertex) const {
+    if (this != INVALID_PATH) {
+        std::vector<unsigned int> prependedPath(this->getPath());
+        prependedPath.insert(prependedPath.begin(), vertex);
+        return new PathWithoutCosts(prependedPath);
+    }
+    else {
+        return this;
+    }
 }
 
 bool PathWithoutCosts::operator==(const PathWithoutCosts& path) const {

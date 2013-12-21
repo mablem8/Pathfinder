@@ -14,8 +14,8 @@ PathMatrix::PathMatrix(const std::vector<const PathMatrixCell*>& pathMatrix, con
 
 PathMatrix::PathMatrix(const PathMatrix& pathMatrix) : __order(pathMatrix.getNumberOfVertices()) {
     for (int i=0; i<pathMatrix.getPathMatrix().size(); i++) {
-        const PathMatrixCell* celli = new PathMatrixCell(*(pathMatrix.getPathMatrix().at(i)));
-        __matrix.push_back(celli);
+        const PathMatrixCell* celli = pathMatrix.getPathMatrix().at(i);
+        __matrix.push_back(celli->clone());
         celli = NULL;
     }
 }

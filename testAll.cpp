@@ -21,6 +21,7 @@
 
 #include "pathMatrixCellTest.h"
 #include "pathMatrixTest.h"
+#include "pathRowVectorTest.h"
 
 int main(int argc, const char * argv[])
 {
@@ -36,6 +37,7 @@ int main(int argc, const char * argv[])
     
     pathMatrixCellTest();
     pathMatrixTest();
+    pathRowVectorTest();
         
     return 0;
 }

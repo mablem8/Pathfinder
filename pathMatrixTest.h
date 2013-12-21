@@ -14,15 +14,46 @@
 
 std::string matrixVectorToString(const std::vector<const PathMatrixCell*>& m, const unsigned int n) {
     std::stringstream ss;
+    std::stringstream rowZeros;
     for (int row=0; row<n; row++) {
-        ss << "+-------------------------------------------- Row " << row << " ---------------------------------------------+" << std::endl;
+        rowZeros.str("");
+        if (row < 1000) {
+            rowZeros << 0;
+            if (row < 100) {
+                rowZeros << 0;
+                if (row < 10) {
+                    rowZeros << 0;
+                }
+            }
+        }
+        ss << std::left << std::setfill('-') << std::setw(59) << "+"
+           << " Row " << rowZeros.str() << row << " "
+           << std::right << std::setfill('-') << std::setw(59) << "+"
+           << std::endl;
+        std::stringstream columnZeros;
         for (int column=0; column<n; column++) {
-            std::stringstream temp;
-            temp << "| Column " << column << ": " << m.at(row*n+column)->toString();
-            ss << std::left << std::setw(97) << temp.str() << "|" << std::endl;
+            columnZeros.str("");
+            if (column < 1000) {
+                columnZeros << 0;
+                if (column < 100) {
+                    columnZeros << 0;
+                    if (column < 10) {
+                        columnZeros << 0;
+                    }
+                }
+            }
+            std::stringstream columnTermString;
+            std::vector<std::string> pathCellStringVector(m.at(row*n+column)->toStringVector());
+            columnTermString << "| Column " << columnZeros.str() << column << ": " << pathCellStringVector.at(0);
+            ss << std::left << std::setfill(' ') << std::setw(127) << columnTermString.str() << "|" << std::endl;
+            for (int term=1; term<pathCellStringVector.size(); term++) {
+                columnTermString.str("");
+                columnTermString << "|              " << pathCellStringVector.at(term);
+                ss << std::left << std::setfill(' ') << std::setw(127) << columnTermString.str() << "|" << std::endl;
+            }
         }
     }
-    ss << "+------------------------------------------------------------------------------------------------+" << std::endl;
+    ss << std::left << std::setfill('-') << std::setw(127) << "+" << "+" << std::endl;
     return ss.str();
 }
 
@@ -143,6 +174,8 @@ void pathMatrixTest() {
         std::cout << "TEST FAILED: pathMatrixTest.csv cannot be opened" << std::endl;
         return;
     }
+    
+    std::cout << matrixVectorToString(fmatrix0, numberOfVertices);
     
     /* Test the constructors */
     
@@ -289,7 +322,11 @@ void pathMatrixTest() {
               << std::endl;
 
     std::cout << "matrix0*matrix0:" << std::endl
-              << matrixVectorToString((matrix0*matrix0)->getPathMatrix(), numberOfVertices) << std::endl;
+              << matrixVectorToString((matrix0*matrix0)->getPathMatrix(), numberOfVertices) << std::endl
+              << "Compare to:" << std::endl
+              << (matrix0*matrix0)->toString() << std::endl
+              << std::endl;
+    
     //              << "\t\t\tCorrect output: "
     //              << INVALID_CELL->toString()
     //              << ((cell0*cell0 == INVALID_CELL) ? "\t\t\tOK" : "\t\t\tTEST FAILED")

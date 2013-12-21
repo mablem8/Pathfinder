@@ -32,7 +32,12 @@ double ConstrainedAdditiveCost::getConstraint() const {
 }
 
 const Cost* ConstrainedAdditiveCost::clone() const {
-    return new ConstrainedAdditiveCost(*this);
+    if (this != INVALID_COST) {
+        return new ConstrainedAdditiveCost(*this);
+    }
+    else {
+        return this;
+    }
 }
 
 bool ConstrainedAdditiveCost::operator==(const ConstrainedAdditiveCost& cost) const {

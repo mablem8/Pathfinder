@@ -19,7 +19,12 @@ double ConstrainedMultiplicativeCost::getConstraint() const {
 }
 
 const Cost* ConstrainedMultiplicativeCost::clone() const {
-    return new ConstrainedMultiplicativeCost(*this);
+    if (this != INVALID_COST) {
+        return new ConstrainedMultiplicativeCost(*this);
+    }
+    else {
+        return this;
+    }
 }
 
 bool ConstrainedMultiplicativeCost::operator==(const ConstrainedMultiplicativeCost& cost) const {

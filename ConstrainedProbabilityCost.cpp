@@ -19,7 +19,12 @@ double ConstrainedProbabilityCost::getConstraint() const {
 }
 
 const Cost* ConstrainedProbabilityCost::clone() const {
-    return new ConstrainedProbabilityCost(*this);
+    if (this != INVALID_COST) {
+        return new ConstrainedProbabilityCost(*this);
+    }
+    else {
+        return this;
+    }
 }
 
 bool ConstrainedProbabilityCost::operator==(const ConstrainedProbabilityCost& cost) const {

@@ -34,7 +34,29 @@ const std::vector<const Cost*>& PathWithCosts::getCosts() const {
 }
 
 const Path* PathWithCosts::clone() const {
-    return new PathWithCosts(*this);
+    if (this != INVALID_PATH) {
+        return new PathWithCosts(*this);
+    }
+    else {
+        return this;
+    }
+}
+
+const Path* PathWithCosts::cloneAndPrepend(const unsigned int vertex) const {
+    if (this != INVALID_PATH) {
+        std::vector<unsigned int> prependedPath(this->getPath());
+        prependedPath.insert(prependedPath.begin(), vertex);
+        std::vector<const Cost*> costsClone;
+        for (int i=0; i<__costs.size(); i++) {
+            const Cost* costi = __costs.at(i);
+            costsClone.push_back(costi->clone());
+            costi = NULL;
+        }
+        return new PathWithCosts(prependedPath, costsClone);
+    }
+    else {
+        return this;
+    }
 }
 
 bool PathWithCosts::operator==(const PathWithCosts& path) const {

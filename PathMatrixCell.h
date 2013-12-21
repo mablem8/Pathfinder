@@ -26,9 +26,12 @@ public:
     
     const std::vector<const Path*>& getPaths() const;
     
+    virtual const PathMatrixCell* clone() const;
+    virtual const PathMatrixCell* cloneAndPrepend(const unsigned int vertex) const;
     virtual const PathMatrixCell* operator+(const PathMatrixCell& cell) const;
     virtual const PathMatrixCell* operator*(const PathMatrixCell& cell) const;
     virtual std::string toString() const;
+    virtual std::vector<std::string> toStringVector() const;
     
 };
 

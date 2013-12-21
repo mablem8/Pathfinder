@@ -59,7 +59,12 @@ std::string Cost::getUnits() const {
 }
 
 const Cost* Cost::clone() const {
-    return new Cost(*this);
+    if (this != INVALID_COST) {
+        return new Cost(*this);
+    }
+    else {
+        return this;
+    }
 }
 
 bool Cost::operator==(const Cost& cost) const {
