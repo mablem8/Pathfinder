@@ -1,9 +1,23 @@
 //
 //  PathMatrixCell.cpp
-//  Pathfinder
 //
-//  Created by Bradley Denby on 11/10/13.
-//  Copyright (c) 2013 Bradley Denby. All rights reserved.
+//  Pathfinder, an optimal path finding program for graphs with
+//  multi-weighted edges under specified constraints.
+//
+//  Copyright (c) 2013 Bradley Denby.
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see {http://www.gnu.org/licenses/}.
 //
 
 #include "PathMatrixCell.h"
@@ -100,6 +114,7 @@ const PathMatrixCell* PathMatrixCell::operator*(const PathMatrixCell& cell) cons
     }
 }
 
+// generally not useful
 std::string PathMatrixCell::toString() const {
     std::stringstream ss;
     ss << "{";
@@ -110,44 +125,30 @@ std::string PathMatrixCell::toString() const {
     return ss.str();
 }
 
+// generally more useful than toString
 std::vector<std::string> PathMatrixCell::toStringVector() const {
-    //std::cout << "PathMatrixCell::toStringVector running" << std::endl;
     std::stringstream ss;
     std::vector<std::string> output;
     ss << "{";
-    //std::cout << ss.str() << std::endl;
     if (__paths.size() == 1) {
-        //std::cout << "__paths.size() == 1" << std::endl;
         ss << " " << __paths.at(0)->toString();
-        //std::cout << ss.str() << std::endl;
     }
     else if (__paths.size() != 0) {
-        //std::cout << "__paths.size() != 0" << std::endl;
         ss << " " << __paths.at(0)->toString();
-        //std::cout << ss.str() << std::endl;
         output.push_back(ss.str());
-        //std::cout << "output.push_back(" << output.back() << ")" << std::endl;
         ss.str("");
     }
-    //std::cout << "Trying for loop" << std::endl;
     for (int i=1; i<(int(__paths.size())-1); i++) {
         ss << " +" << __paths.at(i)->toString();
-        //std::cout << ss.str() << std::endl;
         output.push_back(ss.str());
-        //std::cout << "output.push_back(" << output.back() << ")" << std::endl;
         ss.str("");
     }
     if (__paths.size() > 1) {
-        //std::cout << "__paths.size() > 1" << std::endl;
         ss << " +" << __paths.at(__paths.size()-1)->toString();
-        //std::cout << ss.str() << std::endl;
     }
     ss << " }";
-    //std::cout << ss.str() << std::endl;
     output.push_back(ss.str());
-    //std::cout << "output.push_back(" << output.back() << ")" << std::endl;
     ss.str("");
-    //std::cout << "PathMatrixCell::toStringVector ran" << std::endl;
     return output;
 }
 

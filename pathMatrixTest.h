@@ -1,9 +1,23 @@
 //
 //  pathMatrixTest.h
-//  Pathfinder
 //
-//  Created by Bradley Denby on 11/11/13.
-//  Copyright (c) 2013 Bradley Denby. All rights reserved.
+//  Pathfinder, an optimal path finding program for graphs with
+//  multi-weighted edges under specified constraints.
+//
+//  Copyright (c) 2013 Bradley Denby.
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see {http://www.gnu.org/licenses/}.
 //
 
 #ifndef Pathfinder_pathMatrixTest_h
@@ -53,7 +67,7 @@ std::string matrixVectorToString(const std::vector<const PathMatrixCell*>& m, co
             }
         }
     }
-    ss << std::left << std::setfill('-') << std::setw(127) << "+" << "+" << std::endl;
+    ss << std::left << std::setfill('-') << std::setw(127) << "+" << "+";
     return ss.str();
 }
 
@@ -175,7 +189,7 @@ void pathMatrixTest() {
         return;
     }
     
-    std::cout << matrixVectorToString(fmatrix0, numberOfVertices);
+    std::cout << matrixVectorToString(fmatrix0, numberOfVertices) << std::endl;
     
     /* Test the constructors */
     
@@ -207,41 +221,41 @@ void pathMatrixTest() {
               << std::endl;
 
     std::cout << "matrix0.getPathMatrix():" << std::endl
-              << matrixVectorToString(matrix0.getPathMatrix(), numberOfVertices)
+              << matrixVectorToString(matrix0.getPathMatrix(), numberOfVertices) << std::endl
               << "Correct output:" << std::endl
-              << matrixVectorToString(fmatrix0, numberOfVertices)
+              << matrixVectorToString(fmatrix0, numberOfVertices) << std::endl
               << ((comparePathMatrixCellPointerVectors(matrix0.getPathMatrix(),fmatrix0)) ? "OK" : "TEST FAILED")
               << std::endl << std::endl;
     std::cout << "pmatrix1->getPathMatrix():" << std::endl
-              << matrixVectorToString(pmatrix1->getPathMatrix(), numberOfVertices)
+              << matrixVectorToString(pmatrix1->getPathMatrix(), numberOfVertices) << std::endl
               << "Correct output:" << std::endl
-              << matrixVectorToString(fmatrix1, numberOfVertices)
+              << matrixVectorToString(fmatrix1, numberOfVertices) << std::endl
               << ((comparePathMatrixCellPointerVectors(pmatrix1->getPathMatrix(),fmatrix1)) ? "OK" : "TEST FAILED")
               << std::endl << std::endl;
 
     std::cout << "copymatrix0.getPathMatrix():" << std::endl
-              << matrixVectorToString(copymatrix0.getPathMatrix(), numberOfVertices)
+              << matrixVectorToString(copymatrix0.getPathMatrix(), numberOfVertices) << std::endl
               << "Correct output:" << std::endl
-              << matrixVectorToString(fmatrix0, numberOfVertices)
+              << matrixVectorToString(fmatrix0, numberOfVertices) << std::endl
               << ((comparePathMatrixCellPointerVectors(copymatrix0.getPathMatrix(),fmatrix0)) ? "OK" : "TEST FAILED")
               << std::endl << std::endl;
     std::cout << "copypmatrix1.getPathMatrix():" << std::endl
-              << matrixVectorToString(copypmatrix1.getPathMatrix(), numberOfVertices)
+              << matrixVectorToString(copypmatrix1.getPathMatrix(), numberOfVertices) << std::endl
               << "Correct output:" << std::endl
-              << matrixVectorToString(fmatrix1, numberOfVertices)
+              << matrixVectorToString(fmatrix1, numberOfVertices) << std::endl
               << ((comparePathMatrixCellPointerVectors(copypmatrix1.getPathMatrix(),fmatrix1)) ? "OK" : "TEST FAILED")
               << std::endl << std::endl;
 
     std::cout << "pcopymatrix0->getPathMatrix():" << std::endl
-              << matrixVectorToString(pcopymatrix0->getPathMatrix(), numberOfVertices)
+              << matrixVectorToString(pcopymatrix0->getPathMatrix(), numberOfVertices) << std::endl
               << "Correct output:" << std::endl
-              << matrixVectorToString(fmatrix0, numberOfVertices)
+              << matrixVectorToString(fmatrix0, numberOfVertices) << std::endl
               << ((comparePathMatrixCellPointerVectors(pcopymatrix0->getPathMatrix(),fmatrix0)) ? "OK" : "TEST FAILED")
               << std::endl << std::endl;
     std::cout << "pcopypmatrix1->getPathMatrix():" << std::endl
-              << matrixVectorToString(pcopypmatrix1->getPathMatrix(), numberOfVertices)
+              << matrixVectorToString(pcopypmatrix1->getPathMatrix(), numberOfVertices) << std::endl
               << "Correct output:" << std::endl
-              << matrixVectorToString(fmatrix1, numberOfVertices)
+              << matrixVectorToString(fmatrix1, numberOfVertices) << std::endl
               << ((comparePathMatrixCellPointerVectors(pcopypmatrix1->getPathMatrix(),fmatrix1)) ? "OK" : "TEST FAILED")
               << std::endl;
     
@@ -299,8 +313,9 @@ void pathMatrixTest() {
     
     std::cout << "matrix0.toString():" << std::endl
               << matrix0.toString() << std::endl
-              << "Compare to:" << std::endl
-              << matrixVectorToString(matrix0.getPathMatrix(), numberOfVertices)
+              << "Correct output:" << std::endl
+              << matrixVectorToString(matrix0.getPathMatrix(), numberOfVertices) << std::endl
+              << ((matrix0.toString() == matrixVectorToString(matrix0.getPathMatrix(), numberOfVertices)) ? "OK" : "TEST FAILED")
               << std::endl;
     
     /* Test operator<< */
@@ -311,7 +326,7 @@ void pathMatrixTest() {
     
     std::cout << "cout << matrix0:" << std::endl
               << matrix0 << std::endl
-              << "Compare to:" << std::endl
+              << "Expected output:" << std::endl
               << matrix0.toString() << std::endl
               << std::endl;
 

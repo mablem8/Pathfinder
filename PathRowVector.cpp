@@ -1,9 +1,23 @@
 //
 //  PathRowVector.cpp
-//  Pathfinder
 //
-//  Created by Bradley Denby on 12/19/13.
-//  Copyright (c) 2013 Bradley Denby. All rights reserved.
+//  Pathfinder, an optimal path finding program for graphs with
+//  multi-weighted edges under specified constraints.
+//
+//  Copyright (c) 2013 Bradley Denby.
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see {http://www.gnu.org/licenses/}.
 //
 
 #include "PathRowVector.h"
@@ -73,15 +87,10 @@ const PathRowVector* PathRowVector::operator*(const PathMatrix& pathMatrix) cons
 std::string PathRowVector::toString() const {
     std::stringstream ss;
     std::stringstream rowZeros;
-    if (__rowNumber < 1000) {
-        rowZeros << 0;
-        if (__rowNumber < 100) {
-            rowZeros << 0;
-            if (__rowNumber < 10) {
-                rowZeros << 0;
-            }
-        }
-    }
+    rowZeros.str("");
+    (void)((__rowNumber<1000)&&(rowZeros<<0));
+    (void)((__rowNumber<100)&&(rowZeros<<0));
+    (void)((__rowNumber<10)&&(rowZeros<<0));
     ss << std::left << std::setfill('-') << std::setw(59) << "+"
        << " Row " << rowZeros.str() << __rowNumber << " "
        << std::right << std::setfill('-') << std::setw(59) << "+"
@@ -89,22 +98,16 @@ std::string PathRowVector::toString() const {
     std::stringstream columnZeros;
     for (int column=0; column<__rowVector.size(); column++) {
         columnZeros.str("");
-        if (column < 1000) {
-            columnZeros << 0;
-            if (column < 100) {
-                columnZeros << 0;
-                if (column < 10) {
-                    columnZeros << 0;
-                }
-            }
-        }
+        (void)((column<1000)&&(rowZeros<<0));
+        (void)((column<100)&&(rowZeros<<0));
+        (void)((column<10)&&(rowZeros<<0));
         std::stringstream columnTermString;
         std::vector<std::string> pathCellStringVector(__rowVector.at(column)->toStringVector());
         columnTermString << "| Column " << columnZeros.str() << column << ": " << pathCellStringVector.at(0);
         ss << std::left << std::setfill(' ') << std::setw(127) << columnTermString.str() << "|" << std::endl;
-        for (int term=1; term<pathCellStringVector.size(); term++) {
+        for (int columnTerm=1; columnTerm<pathCellStringVector.size(); columnTerm++) {
             columnTermString.str("");
-            columnTermString << "|              " << pathCellStringVector.at(term);
+            columnTermString << "|              " << pathCellStringVector.at(columnTerm);
             ss << std::left << std::setfill(' ') << std::setw(127) << columnTermString.str() << "|" << std::endl;
         }
     }
