@@ -1,4 +1,4 @@
 Pathfinder
 ==========
 
-An algorithm for finding multi-weighted paths through graphs.
+An optimal path finding program for graphs with multi-weighted edges under specified constraints.
